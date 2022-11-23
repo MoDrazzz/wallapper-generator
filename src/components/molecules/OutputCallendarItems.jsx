@@ -7,11 +7,7 @@ const Callendar = ({ yearData, monthIndexData }) => {
   return (
     <div className={`flex justify-between text-center`}>
       {previousMonthDays.map((dayData, id) => (
-        <OutputCallendarItem
-          key={id}
-          className="text-[#444444]"
-          data={dayData}
-        />
+        <OutputCallendarItem key={id} isPreviousMonth data={dayData} />
       ))}
       {monthDays.map((dayData, id) => (
         <OutputCallendarItem key={id} data={dayData} />
