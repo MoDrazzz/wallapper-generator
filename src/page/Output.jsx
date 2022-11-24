@@ -1,8 +1,11 @@
 import OutputCallendar from "@/components/organisms/OutputCallendar.jsx";
 
-const Output = () => {
+const Output = ({ outputRef }) => {
   return (
-    <div className="flex h-[100vh] flex-col justify-end bg-[url('https://cdn.discordapp.com/attachments/645302933272920064/931568550672498698/14-01-2022_2.jpg')] bg-cover bg-center">
+    <div
+      className="flex h-[100vh] flex-col justify-end bg-[url('src/assets/mockPhoto.jpg')] bg-cover bg-center"
+      ref={outputRef}
+    >
       <OutputCallendar />
     </div>
   );
