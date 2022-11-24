@@ -9,7 +9,7 @@ const Root = () => {
   const saveImage = async (e) => {
     e.target.innerHTML = "Loading";
 
-    const output = await html2canvas(outputRef.current, {
+    const output16x9 = await html2canvas(outputRef.current, {
       width: 1920,
       height: 1080,
       windowWidth: 1920,
@@ -17,9 +17,20 @@ const Root = () => {
       scale: 1,
     }).then((result) => result.toDataURL("image/png"));
 
+    const output16x10 = await html2canvas(outputRef.current, {
+      width: 1728,
+      height: 1080,
+      windowWidth: 1728,
+      windowHeight: 1080,
+      scale: 1,
+    }).then((result) => result.toDataURL("image/png"));
+
     const anchor = document.createElement("a");
-    anchor.setAttribute("download", "Wallpaper.png");
-    anchor.setAttribute("href", output);
+    anchor.setAttribute("download", "PLVACC_Tapeta_16x9.png");
+    anchor.setAttribute("href", output16x9);
+    anchor.click();
+    anchor.setAttribute("download", "PLVACC_Tapeta_16x10.png");
+    anchor.setAttribute("href", output16x10);
     anchor.click();
 
     e.target.innerHTML = "Click me";

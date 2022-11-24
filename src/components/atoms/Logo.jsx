@@ -1,5 +1,8 @@
-import logo from "@/assets/logos/logo-white.png";
+import { ReactComponent as LogoSrc } from "@/assets/logos/logo-white.svg";
 
-const Logo = () => <img src={logo} alt="PL-VACC_logo_mono+tagline" />;
+const Logo = () => {
+  console.log(LogoSrc);
+  return <LogoSrc />;
+};
 
 export default Logo;

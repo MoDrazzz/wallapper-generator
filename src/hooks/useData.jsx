@@ -21,9 +21,11 @@ const useData = (year, monthIndex) => {
       const day = date.toLocaleDateString("pl-PL", {
         weekday: "short",
       });
+      const dayName = convertDays(day);
       return {
-        dayName: convertDays(day),
+        dayName,
         dayNumber: date.getDate(),
+        isWeekend: dayName == "SB." || dayName == "ND." ? true : false,
       };
     }
   );
