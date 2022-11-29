@@ -29,7 +29,8 @@ const Root = () => {
     fileRejections,
     getRootProps,
     getInputProps,
-    isDragActive,
+    isDragAccept,
+    isDragReject,
   } = useDropzone({
     accept: {
       "image/jpeg": [],
@@ -63,9 +64,13 @@ const Root = () => {
           <p className="text-base text-secondary">Step 1: Upload a photo.</p>
           <div
             {...getRootProps({
-              className: isDragActive
-                ? "flex h-full w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed border-secondary bg-dimmedWhite"
-                : "flex h-full w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed border-lightGray bg-dimmedWhite",
+              className: `flex h-full w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed ${
+                isDragAccept
+                  ? "border-green-500"
+                  : isDragReject
+                  ? "border-primary"
+                  : "border-lightGray"
+              } bg-dimmedWhite`,
             })}
           >
             <input {...getInputProps()} />

@@ -2,13 +2,6 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
-    colors: {
-      primary: "#E51114",
-      secondary: "#434242",
-      lightGray: "#CCCCCC",
-      dimmedWhite: "#F5F5F5",
-      white: "#FFFFFF",
-    },
     extend: {
       keyframes: {
         slideInOut: {
@@ -18,6 +11,13 @@ module.exports = {
       },
       animation: {
         slideInOut: "slideInOut 5s ease-in-out",
+      },
+      colors: {
+        primary: "#E51114",
+        secondary: "#434242",
+        lightGray: "#CCCCCC",
+        dimmedWhite: "#F5F5F5",
+        white: "#FFFFFF",
       },
     },
   },
