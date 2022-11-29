@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import Root from "@/pages/Root.jsx";
 import ImageUpload from "@/pages/ImageUpload";
+import WallpaperDetails from "@/pages/WallpaperDetails";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const Router = () => {
         {
           path: "/upload",
           element: <ImageUpload />,
+        },
+        {
+          path: "/details",
+          element: <WallpaperDetails />,
         },
       ],
     },

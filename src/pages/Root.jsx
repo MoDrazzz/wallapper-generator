@@ -4,6 +4,7 @@ import Title from "@/components/atoms/Title";
 import ContentContainer from "@/components/organisms/ContentContainer";
 import Errors from "@/components/molecules/Errors";
 import { Outlet } from "react-router-dom";
+import Stages from "@/components/molecules/Stages";
 
 const Root = () => {
   const [errors, setErrors] = useState([]);
@@ -25,6 +26,7 @@ const Root = () => {
       <Logo />
       <Title>Wallpaper generator - are you ready to create one?</Title>
       <ContentContainer>
+        <Stages />
         <Outlet context={[handleError, isLocked]} />
       </ContentContainer>
       {errors.length ? <Errors errors={errors} /> : null}

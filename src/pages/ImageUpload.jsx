@@ -5,7 +5,6 @@ import Dropzone from "@/components/molecules/Dropzone";
 const ImageUpload = () => {
   return (
     <>
-      <Stages />
       <Paragraph>Step 1: Upload a photo.</Paragraph>
       <Dropzone />
     </>

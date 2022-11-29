@@ -1,11 +1,22 @@
 import { useDropzone } from "react-dropzone";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import DropzoneParagraph from "@/components/atoms/DropzoneParagraph";
+
+import { PhotoContext } from "@/App";
+import { useContext, useEffect } from "react";
 
 const Dropzone = () => {
   const [handleError, isLocked] = useOutletContext();
+  const navigate = useNavigate();
+  const { photo, setPhoto } = useContext(PhotoContext);
+
+  useEffect(() => {
+    if (photo) {
+      return navigate("/details");
+    }
+  }, [photo]);
 
   const handleDropzone = (acceptedFiles, rejectedFiles) => {
     // Check if there is any rejected file. If so, it means that files shouldn't be passed.
@@ -17,7 +28,8 @@ const Dropzone = () => {
         handleError("Wrong file type.");
       }
     } else {
-      console.log("Passed!", acceptedFiles);
+      // console.log("Passed!", acceptedFiles);
+      setPhoto(acceptedFiles[0]);
     }
   };
 
