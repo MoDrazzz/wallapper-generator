@@ -7,7 +7,7 @@ const Logo = ({ isWhite }) => {
       {isWhite ? (
         <img src={LogoWhite} />
       ) : (
-        <img src={LogoGray} className="w-[300px]" />
+        <img src={LogoGray} className="w-[80%] max-w-[300px]" />
       )}
     </>
   );

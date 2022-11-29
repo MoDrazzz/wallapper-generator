@@ -2,6 +2,12 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
+    screens: {
+      "sm": "552px",
+      "md": "768px",
+      "lg": "992px",
+      "xl": "1200px",
+    },
     extend: {
       keyframes: {
         slideInOut: {
@@ -17,7 +23,6 @@ module.exports = {
         secondary: "#434242",
         lightGray: "#CCCCCC",
         dimmedWhite: "#F5F5F5",
-        white: "#FFFFFF",
       },
     },
   },
