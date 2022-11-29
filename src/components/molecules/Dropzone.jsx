@@ -8,7 +8,7 @@ import { PhotoContext } from "@/App";
 import { useContext, useEffect } from "react";
 
 const Dropzone = () => {
-  const [handleError, isLocked] = useOutletContext();
+  const { handleErrors, isLocked } = useOutletContext();
   const navigate = useNavigate();
   const { photo, setPhoto } = useContext(PhotoContext);
 
@@ -23,9 +23,9 @@ const Dropzone = () => {
     if (rejectedFiles.length) {
       // Look for the reason of rejected files. If their count is more than one, handle given error.
       if (rejectedFiles.length > 1 || acceptedFiles.length) {
-        handleError("More than one file was choosen.");
+        handleErrors("More than one file was choosen.");
       } else {
-        handleError("Wrong file type.");
+        handleErrors("Wrong file type.");
       }
     } else {
       // console.log("Passed!", acceptedFiles);

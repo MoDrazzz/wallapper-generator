@@ -10,8 +10,8 @@ const Root = () => {
   const [errors, setErrors] = useState([]);
   const [isLocked, setIsLocked] = useState(false);
 
-  const handleError = (msg) => {
-    setErrors([...errors, msg]);
+  const handleErrors = (...msg) => {
+    setErrors([...errors, ...msg]);
     setIsLocked(true);
     setTimeout(() => {
       const newErrors = errors;
@@ -27,7 +27,7 @@ const Root = () => {
       <Title>Wallpaper generator - are you ready to create one?</Title>
       <ContentContainer>
         <Stages />
-        <Outlet context={[handleError, isLocked]} />
+        <Outlet context={{ handleErrors, isLocked }} />
       </ContentContainer>
       {errors.length ? <Errors errors={errors} /> : null}
     </div>
