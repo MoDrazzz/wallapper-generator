@@ -8,28 +8,35 @@ const Root = () => {
   const [errors, setErrors] = useState([]);
   const [locked, setLocked] = useState(false);
 
-  const handleDropzone = (files) => {
-    if (files.length > 1) {
-      setErrors([...errors, "More than one file was choosen."]);
-      setLocked(true);
-      setTimeout(() => {
-        const newErrors = errors;
-        newErrors.shift();
-        setErrors(newErrors);
-        setLocked(false);
-      }, 5000);
+  const handleError = (msg) => {
+    setErrors([...errors, msg]);
+    setLocked(true);
+    setTimeout(() => {
+      const newErrors = errors;
+      newErrors.shift();
+      setErrors(newErrors);
+      setLocked(false);
+    }, 5000);
+  };
+
+  const handleDropzone = (acceptedFiles, rejectedFiles) => {
+    if (rejectedFiles.length) {
+      if (rejectedFiles.length > 1 || acceptedFiles.length) {
+        handleError("More than one file was choosen.");
+      } else {
+        handleError("Wrong file type.");
+      }
     } else {
-      console.log("Passed!", files);
+      console.log("Passed!", acceptedFiles);
     }
   };
 
   const {
-    acceptedFiles,
     getRootProps,
     getInputProps,
     isDragAccept,
     isDragReject,
-    isDragActive,
+    isFileDialogActive,
   } = useDropzone({
     accept: {
       "image/jpeg": [],
@@ -37,6 +44,7 @@ const Root = () => {
     },
     onDrop: handleDropzone,
     disabled: locked,
+    multiple: false,
   });
 
   return (
@@ -62,15 +70,15 @@ const Root = () => {
         <p className="text-base text-secondary">Step 1: Upload a photo.</p>
         <div
           {...getRootProps({
-            className: `flex py-[40px] flex-1 w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed ${
+            className: `bg-dimmedWhite transition-[border-color] duration-500 ease-in-out flex py-[40px] flex-1 w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed ${
               isDragAccept
                 ? "border-green-500"
                 : isDragReject
                 ? "border-primary"
-                : isDragActive
+                : isFileDialogActive
                 ? "border-secondary"
                 : "border-lightGray"
-            } bg-dimmedWhite`,
+            }`,
           })}
         >
           <input {...getInputProps()} />
