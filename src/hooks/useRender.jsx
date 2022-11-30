@@ -11,30 +11,34 @@ const useRender = (elemRef) => {
       windowHeight: height,
       scale,
       onclone: (doc) => {
-        doc.querySelector(".hidden").classList.remove("hidden");
+        const elem = doc.querySelector("#exportContainer");
+        elem.classList.remove("hidden");
+        elem.style.position = "absolute";
+        elem.style.left = 0;
+        elem.style.top = 0;
       },
     }).then((result) => result.toDataURL("image/png"));
 
-    const anchor = document.createElement("a");
-    anchor.setAttribute(
-      "download",
-      `PLVACC_Tapeta_${aspectRatio}_${scale * 2}k.png`
-    );
-    anchor.setAttribute("href", output);
-    anchor.click();
+    // const anchor = document.createElement("a");
+    // anchor.setAttribute(
+    //   "download",
+    //   `PLVACC_Tapeta_${aspectRatio}_${scale * 2}k.png`
+    // );
+    // anchor.setAttribute("href", output);
+    // anchor.click();
+
+    return output;
   };
 
-  const renderWallpapers = async (e) => {
-    e.target.innerHTML = "Loading";
-
+  const renderWallpapers = async () => {
     // Full HD 16x9 STANDARD
-    renderWallpaper();
+    const output = renderWallpaper();
     // Full HD 16x10
     renderWallpaper(1, "16x10");
     // 4k 16x9
     renderWallpaper(2);
 
-    e.target.innerHTML = "Click me!";
+    return output;
   };
 
   return { renderWallpapers };

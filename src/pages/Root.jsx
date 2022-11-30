@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Logo from "@/components/atoms/Logo.jsx";
 import Title from "@/components/atoms/Title";
 import ContentContainer from "@/components/organisms/ContentContainer";

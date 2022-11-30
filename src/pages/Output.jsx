@@ -1,31 +1,43 @@
 import OutputCallendar from "@/components/organisms/OutputCallendar.jsx";
-import { useContext, useEffect } from "react";
-import { OutputContext } from "@/App";
-import { PhotoContext } from "@/App";
+import { useContext, useEffect, useRef, useState } from "react";
+import { DataContext } from "@/App";
+import { Navigate } from "react-router-dom";
+import useRender from "@/hooks/useRender";
 
 const Output = () => {
-  const outputRef = useContext(OutputContext);
-  const { photo } = useContext(PhotoContext);
+  const [canvas, setCanvas] = useState();
+  const { photo } = useContext(DataContext);
+
+  const outputRef = useRef();
+  const { renderWallpapers } = useRender(outputRef);
+
+  if (!photo) {
+    return <Navigate to="/" />;
+  }
 
   useEffect(() => {
     document.querySelector(
       "#outputPhoto"
-    ).style.backgroundImage = `url(${URL.createObjectURL(photo[0])})`;
+    ).style.backgroundImage = `url(${URL.createObjectURL(photo)})`;
+    renderWallpapers(outputRef).then((res) => {
+      console.log(res);
+      setCanvas(res);
+    });
+    // console.log(renderWallpapers(outputRef));
   }, []);
 
-  // bg-[url("${URL.createObjectURL(
-  // photo[0]
-  // )}.jpeg")]
-
   return (
-    <div ref={outputRef} className="hidden">
-      <div
-        className={`flex h-[100vh] flex-col justify-end bg-cover bg-center`}
-        id="outputPhoto"
-      >
-        <OutputCallendar />
+    <>
+      <img src={canvas} alt="" />
+      <div ref={outputRef} id="exportContainer" className="hidden">
+        <div
+          className={`flex h-[100vh] flex-col justify-end bg-cover bg-center`}
+          id="outputPhoto"
+        >
+          <OutputCallendar />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

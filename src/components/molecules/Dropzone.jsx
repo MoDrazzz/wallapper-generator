@@ -4,13 +4,13 @@ import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import DropzoneParagraph from "@/components/atoms/DropzoneParagraph";
 
-import { PhotoContext } from "@/App";
+import { DataContext } from "@/App";
 import { useContext, useEffect } from "react";
 
 const Dropzone = () => {
   const { handleErrors, isLocked } = useOutletContext();
   const navigate = useNavigate();
-  const { photo, setPhoto } = useContext(PhotoContext);
+  const { photo, setPhoto } = useContext(DataContext);
 
   useEffect(() => {
     if (photo) {
@@ -52,7 +52,7 @@ const Dropzone = () => {
   return (
     <div
       {...getRootProps({
-        className: `bg-dimmedWhite transition-[border-color] duration-500 ease-in-out flex py-[40px] flex-1 w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed ${
+        className: `bg-dimmedWhite transition-[border-color,_opacity] duration-500 ease-in-out flex py-[40px] flex-1 w-full flex-col items-center justify-center gap-[10px] rounded-[20px] border-2 border-dashed ${
           isDragAccept
             ? "border-green-500"
             : isDragReject
@@ -60,7 +60,7 @@ const Dropzone = () => {
             : isFileDialogActive
             ? "border-secondary"
             : "border-lightGray"
-        } ${isLocked ? "cursor-normal" : "cursor-pointer"}`,
+        } ${isLocked ? "cursor-normal opacity-[0.5]" : "cursor-pointer"}`,
       })}
     >
       <input {...getInputProps()} />

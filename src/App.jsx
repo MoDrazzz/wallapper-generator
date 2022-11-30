@@ -1,24 +1,23 @@
 import Router from "@/Router.jsx";
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export const OutputContext = React.createContext();
-export const PhotoContext = React.createContext();
+export const DataContext = React.createContext();
 
 const App = () => {
-  const outputRef = useRef();
   const [photo, setPhoto] = useState();
+  const [details, setDetails] = useState();
 
   return (
-    <OutputContext.Provider value={outputRef}>
-      <PhotoContext.Provider
-        value={{
-          photo,
-          setPhoto,
-        }}
-      >
-        <Router />
-      </PhotoContext.Provider>
-    </OutputContext.Provider>
+    <DataContext.Provider
+      value={{
+        photo,
+        setPhoto,
+        details,
+        setDetails,
+      }}
+    >
+      <Router />
+    </DataContext.Provider>
   );
 };
 

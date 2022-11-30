@@ -6,6 +6,7 @@ import {
 import Root from "@/pages/Root.jsx";
 import ImageUpload from "@/pages/ImageUpload";
 import WallpaperDetails from "@/pages/WallpaperDetails";
+import Output from "@/pages/Output";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const Router = () => {
         {
           path: "/details",
           element: <WallpaperDetails />,
+        },
+        {
+          path: "/download",
+          element: <Output />,
         },
       ],
     },
