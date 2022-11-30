@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import DropzoneParagraph from "@/components/atoms/DropzoneParagraph";
+import { flushSync } from "react-dom";
 
-import { DataContext } from "@/App";
+import { DataContext } from "@/pages/Root";
 import { useContext, useEffect } from "react";
 
 const Dropzone = () => {
@@ -12,11 +13,11 @@ const Dropzone = () => {
   const navigate = useNavigate();
   const { photo, setPhoto } = useContext(DataContext);
 
-  useEffect(() => {
-    if (photo) {
-      return navigate("/details");
-    }
-  }, [photo]);
+  // useEffect(() => {
+  //   if (photo) {
+  //     return navigate("/details");
+  //   }
+  // }, [photo]);
 
   const handleDropzone = (acceptedFiles, rejectedFiles) => {
     // Check if there is any rejected file. If so, it means that files shouldn't be passed.
@@ -29,7 +30,10 @@ const Dropzone = () => {
       }
     } else {
       // console.log("Passed!", acceptedFiles);
-      setPhoto(acceptedFiles[0]);
+      flushSync(() => {
+        setPhoto(acceptedFiles[0]);
+      });
+      navigate("/details");
     }
   };
 

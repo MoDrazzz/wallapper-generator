@@ -1,14 +1,31 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Logo from "@/components/atoms/Logo.jsx";
 import Title from "@/components/atoms/Title";
 import ContentContainer from "@/components/organisms/ContentContainer";
 import Errors from "@/components/molecules/Errors";
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 import Stages from "@/components/molecules/Stages";
+// import { DataContext } from "@/App";
+
+export const DataContext = React.createContext();
 
 const Root = () => {
+  const [photo, setPhoto] = useState();
+  const [details, setDetails] = useState();
   const [errors, setErrors] = useState([]);
   const [isLocked, setIsLocked] = useState(false);
+  // const { photo, details } = useContext(DataContext);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!photo) {
+  //     navigate("/");
+  //   } else if (!details) {
+  //     navigate("/details");
+  //   } else if (details) {
+  //     navigate("/download");
+  //   }
+  // }, [photo, details]);
 
   const handleErrors = (...msg) => {
     setErrors([...errors, ...msg]);
@@ -27,7 +44,16 @@ const Root = () => {
       <Title>Wallpaper generator - are you ready to create one?</Title>
       <ContentContainer>
         <Stages />
-        <Outlet context={{ handleErrors, isLocked }} />
+        <DataContext.Provider
+          value={{
+            photo,
+            setPhoto,
+            details,
+            setDetails,
+          }}
+        >
+          <Outlet context={{ handleErrors, isLocked }} />
+        </DataContext.Provider>
       </ContentContainer>
       {errors.length ? <Errors errors={errors} /> : null}
     </div>

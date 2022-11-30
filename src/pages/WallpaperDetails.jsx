@@ -1,5 +1,5 @@
 import Paragraph from "@/components/atoms/Paragraph";
-import { DataContext } from "@/App";
+import { DataContext } from "@/pages/Root";
 import { useContext, useEffect } from "react";
 import { Navigate, useNavigate, useOutletContext } from "react-router-dom";
 import { Field, Form, Formik } from "formik";
@@ -30,9 +30,11 @@ const WallpaperDetails = () => {
   const { handleErrors, isLocked } = useOutletContext();
   const { photo, details, setDetails } = useContext(DataContext);
 
-  if (!photo) {
-    return <Navigate to="/" />;
-  }
+  // if (!photo) {
+  //   return <Navigate to="/" />;
+  // }
+
+  console.log("2", photo);
 
   const {
     isOpen,
@@ -47,15 +49,16 @@ const WallpaperDetails = () => {
     items: months,
   });
 
-  useEffect(() => {
-    if (details) {
-      return navigate("/download");
-    }
-  }, [details]);
+  // useEffect(() => {
+  //   if (details) {
+  //     return navigate("/download");
+  //   }
+  // }, [details]);
 
   const handleSubmit = (values) => {
     values.month = months.indexOf(selectedItem);
     setDetails(values);
+    navigate("/download");
   };
 
   return (
