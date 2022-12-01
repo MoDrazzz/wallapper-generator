@@ -15,6 +15,7 @@ const renderWallpaper = async (scale = 1, aspectRatio = "16x9") => {
     windowWidth: 1920,
     windowHeight: height,
     scale,
+    useCORS: true,
     onclone: (doc) => {
       const elementToRender = doc.querySelector("#exportContainer");
       elementToRender.classList.remove("hidden");
@@ -39,15 +40,15 @@ const renderWallpapers = async () => {
   // Full HD 16x9 STANDARD
   const output = renderWallpaper();
   // Full HD 16x10
-  renderWallpaper(1, "16x10");
+  // renderWallpaper(1, "16x10");
   // 4k 16x9
-  renderWallpaper(2);
+  // renderWallpaper(2);
 
   return output;
 };
 
 const Download = () => {
-  const [canvas, setCanvas] = useState();
+  const [renderedImage, setRenderedImage] = useState();
   const { photo } = useDataContext();
   const navigate = useNavigate();
 
@@ -59,14 +60,14 @@ const Download = () => {
       photo && URL.createObjectURL(photo)
     })`;
     renderWallpapers().then((res) => {
-      setCanvas(res);
+      setRenderedImage(res);
     });
   }, []);
 
   return (
     <>
       <Paragraph>Step 3: Download the wallpaper.</Paragraph>
-      <img src={canvas} alt="" />
+      <img src={renderedImage} alt="" />
       {photo ? <Output /> : null}
     </>
   );

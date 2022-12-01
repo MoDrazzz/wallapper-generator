@@ -5,7 +5,7 @@ const Logo = ({ isWhite }) => {
   return (
     <>
       {isWhite ? (
-        <img src={LogoWhite} />
+        <img src="https://i.imgur.com/7PagZrt.png" />
       ) : (
         <img src={LogoGray} className="w-[80%] max-w-[300px]" />
       )}
