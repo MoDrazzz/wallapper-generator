@@ -1,7 +1,11 @@
-import useData from "@/hooks/useData.jsx";
+import { useDataContext } from "@/components/DataProvider";
+import useMonth from "@/hooks/useMonth";
 
-const OutputCallendarMonth = ({ yearData, monthIndexData }) => {
-  const { monthName, year } = useData(yearData, monthIndexData);
+const OutputCallendarMonth = () => {
+  const {
+    details: { monthIndex, year },
+  } = useDataContext();
+  const { monthName } = useMonth(year, monthIndex);
 
   return (
     <p className="col-span-full text-base tracking-wide [word-spacing:25px]">

@@ -28,7 +28,7 @@ const Details = () => {
 
   const navigate = useNavigate();
   const { handleErrors, isLocked } = useOutletContext();
-  const { photo, details, setDetails } = useDataContext();
+  const { photo, setDetails } = useDataContext();
 
   useEffect(() => {
     if (!photo) {
@@ -50,7 +50,8 @@ const Details = () => {
   });
 
   const handleSubmit = (values) => {
-    values.month = months.indexOf(selectedItem);
+    values.monthIndex = months.indexOf(selectedItem);
+    values.monthName = selectedItem;
     setDetails(values);
     navigate("/download");
   };
@@ -157,15 +158,12 @@ const Details = () => {
             />
           </div>
           <div className="mb-[20px] w-full">
-            <label
-              className="text-secondary md:text-lg"
-              htmlFor="wallpaperName"
-            >
-              Wallpaper Name
+            <label className="text-secondary md:text-lg" htmlFor="authors">
+              Authors
             </label>
             <Field
               className="w-full rounded-[5px] border-[1px] border-secondary p-[5px] pl-[10px] text-secondary"
-              name="wallpaperName"
+              name="authors"
               type="text"
               maxLength="30"
             />

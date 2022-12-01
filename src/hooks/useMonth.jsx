@@ -1,4 +1,4 @@
-const useData = (year, monthIndex) => {
+const useMonth = (year, monthIndex) => {
   const convertDays = (shortDayName) => {
     switch (shortDayName) {
       case "pon.":
@@ -61,4 +61,4 @@ const useData = (year, monthIndex) => {
   };
 };
 
-export default useData;
+export default useMonth;

@@ -1,8 +1,12 @@
-import useData from "@/hooks/useData.jsx";
 import OutputCallendarItem from "@/components/atoms/OutputCallendarItem.jsx";
+import useMonth from "@/hooks/useMonth";
+import { useDataContext } from "@/components/DataProvider";
 
-const OutputCallendarItems = ({ yearData, monthIndexData }) => {
-  const { previousMonthDays, monthDays } = useData(yearData, monthIndexData);
+const OutputCallendarItems = () => {
+  const {
+    details: { monthIndex, year },
+  } = useDataContext();
+  const { previousMonthDays, monthDays } = useMonth(year, monthIndex);
 
   return (
     <div className={`flex justify-between text-center`}>
