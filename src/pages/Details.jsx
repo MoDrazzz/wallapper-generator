@@ -22,7 +22,7 @@ const months = [
   "December",
 ];
 
-const WallpaperDetails = () => {
+const Details = () => {
   const now = new Date();
   const currentYear = now.getFullYear();
 
@@ -185,4 +185,4 @@ const WallpaperDetails = () => {
   );
 };
 
-export default WallpaperDetails;
+export default Details;

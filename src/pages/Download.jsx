@@ -1,10 +1,11 @@
-import OutputCallendar from "@/components/organisms/OutputCallendar.jsx";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useRender from "@/hooks/useRender";
 import { useDataContext } from "@/components/DataProvider";
+import Output from "@/components/organisms/Output";
+import Paragraph from "@/components/atoms/Paragraph";
 
-const Output = () => {
+const Download = () => {
   const [canvas, setCanvas] = useState();
   const { photo } = useDataContext();
   const navigate = useNavigate();
@@ -16,9 +17,6 @@ const Output = () => {
     if (!photo) {
       return navigate("/");
     }
-  }, []);
-
-  useEffect(() => {
     document.querySelector("#outputPhoto").style.backgroundImage = `url(${
       photo && URL.createObjectURL(photo)
     })`;
@@ -29,17 +27,11 @@ const Output = () => {
 
   return (
     <>
+      <Paragraph>Step 3: Download the wallpaper.</Paragraph>
       <img src={canvas} alt="" />
-      <div ref={outputRef} id="exportContainer" className="hidden">
-        <div
-          className={`flex h-[100vh] flex-col justify-end bg-cover bg-center`}
-          id="outputPhoto"
-        >
-          <OutputCallendar />
-        </div>
-      </div>
+      <Output outputRef={outputRef} />
     </>
   );
 };
 
-export default Output;
+export default Download;

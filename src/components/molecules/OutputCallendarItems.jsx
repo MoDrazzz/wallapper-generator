@@ -1,7 +1,7 @@
 import useData from "@/hooks/useData.jsx";
 import OutputCallendarItem from "@/components/atoms/OutputCallendarItem.jsx";
 
-const Callendar = ({ yearData, monthIndexData }) => {
+const OutputCallendarItems = ({ yearData, monthIndexData }) => {
   const { previousMonthDays, monthDays } = useData(yearData, monthIndexData);
 
   return (
@@ -16,4 +16,4 @@ const Callendar = ({ yearData, monthIndexData }) => {
   );
 };
 
-export default Callendar;
+export default OutputCallendarItems;

@@ -4,9 +4,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import Root from "@/pages/Root.jsx";
-import ImageUpload from "@/pages/ImageUpload";
-import WallpaperDetails from "@/pages/WallpaperDetails";
-import Output from "@/pages/Output";
+import Upload from "@/pages/Upload";
+import Details from "@/pages/Details";
+import Download from "@/pages/Download";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -24,15 +24,15 @@ const Router = () => {
         },
         {
           path: "/upload",
-          element: <ImageUpload />,
+          element: <Upload />,
         },
         {
           path: "/details",
-          element: <WallpaperDetails />,
+          element: <Details />,
         },
         {
           path: "/download",
-          element: <Output />,
+          element: <Download />,
         },
       ],
     },

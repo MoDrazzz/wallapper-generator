@@ -1,8 +1,7 @@
-import Stages from "@/components/molecules/Stages";
 import Paragraph from "@/components/atoms/Paragraph";
 import Dropzone from "@/components/molecules/Dropzone";
 
-const ImageUpload = () => {
+const Upload = () => {
   return (
     <>
       <Paragraph>Step 1: Upload a photo.</Paragraph>
@@ -11,4 +10,4 @@ const ImageUpload = () => {
   );
 };
 
-export default ImageUpload;
+export default Upload;
