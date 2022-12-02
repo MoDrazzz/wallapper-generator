@@ -5,7 +5,7 @@ import months from "@/data/months";
 
 import Label from "@/components/atoms/Label";
 
-const Select = ({ initialValue, setSelectValue }) => {
+const SelectField = ({ initialValue, setFieldValue }) => {
   const {
     isOpen,
     selectedItem,
@@ -18,7 +18,8 @@ const Select = ({ initialValue, setSelectValue }) => {
     initialSelectedItem: initialValue,
     items: months,
     onSelectedItemChange: (item) => {
-      setSelectValue(item.selectedItem);
+      setFieldValue("monthName", item.selectedItem);
+      setFieldValue("monthIndex", months.indexOf(item.selectedItem));
     },
   });
 
@@ -72,4 +73,4 @@ const Select = ({ initialValue, setSelectValue }) => {
   );
 };
 
-export default Select;
+export default SelectField;

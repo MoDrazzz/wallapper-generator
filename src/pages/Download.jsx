@@ -29,13 +29,13 @@ const renderWallpaper = async (
     },
   }).then((result) => result.toDataURL("image/png"));
 
-  const anchor = document.createElement("a");
-  anchor.setAttribute(
-    "download",
-    `${wallpaperName}_${aspectRatio}_${scale * 2}k.png`
-  );
-  anchor.setAttribute("href", output);
-  anchor.click();
+  // const anchor = document.createElement("a");
+  // anchor.setAttribute(
+  //   "download",
+  //   `${wallpaperName}_${aspectRatio}_${scale * 2}k.png`
+  // );
+  // anchor.setAttribute("href", output);
+  // anchor.click();
 
   return output;
 };
@@ -53,10 +53,7 @@ const renderWallpapers = (wallpaperName) => {
 
 const Download = () => {
   const [renderedImage, setRenderedImage] = useState();
-  const {
-    photo,
-    details: { wallpaperName },
-  } = useDataContext();
+  const { photo, details } = useDataContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,7 +63,7 @@ const Download = () => {
     document.querySelector("#outputPhoto").style.backgroundImage = `url(${
       photo && URL.createObjectURL(photo)
     })`;
-    renderWallpapers(wallpaperName).then((res) => {
+    renderWallpapers(details.wallpaperName).then((res) => {
       setRenderedImage(res);
     });
   }, []);
