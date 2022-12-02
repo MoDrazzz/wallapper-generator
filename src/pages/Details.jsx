@@ -8,11 +8,11 @@ const Details = () => {
   const navigate = useNavigate();
   const { photo } = useDataContext();
 
-  useEffect(() => {
-    if (!photo) {
-      navigate("/");
-    }
-  }, [photo]);
+  // useEffect(() => {
+  //   if (!photo) {
+  //     navigate("/");
+  //   }
+  // }, [photo]);
 
   return (
     <>

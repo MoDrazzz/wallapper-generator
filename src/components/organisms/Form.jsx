@@ -74,7 +74,13 @@ const Form = () => {
           />
         </div>
         <FormField label="Wallpaper Name" name="wallpaperName" maxLength="30" />
-        <FormField label="Authors" name="authors" />
+        <FormField
+          label="Authors"
+          info="max 2"
+          name="authors"
+          type="tag"
+          maxLength="2"
+        />
         <Button disabled={isLocked} classes="mt-auto">
           Generate
         </Button>

@@ -6,7 +6,11 @@ import Paragraph from "@/components/atoms/Paragraph";
 
 import html2canvas from "html2canvas";
 
-const renderWallpaper = async (scale = 1, aspectRatio = "16x9") => {
+const renderWallpaper = async (
+  scale = 1,
+  aspectRatio = "16x9",
+  wallpaperName
+) => {
   const height = aspectRatio == "16x10" ? 1200 : 1080;
 
   const output = await html2canvas(document.querySelector("#exportContainer"), {
@@ -25,31 +29,34 @@ const renderWallpaper = async (scale = 1, aspectRatio = "16x9") => {
     },
   }).then((result) => result.toDataURL("image/png"));
 
-  // const anchor = document.createElement("a");
-  // anchor.setAttribute(
-  //   "download",
-  //   `PLVACC_Tapeta_${aspectRatio}_${scale * 2}k.png`
-  // );
-  // anchor.setAttribute("href", output);
-  // anchor.click();
+  const anchor = document.createElement("a");
+  anchor.setAttribute(
+    "download",
+    `${wallpaperName}_${aspectRatio}_${scale * 2}k.png`
+  );
+  anchor.setAttribute("href", output);
+  anchor.click();
 
   return output;
 };
 
-const renderWallpapers = async () => {
+const renderWallpapers = (wallpaperName) => {
   // Full HD 16x9 STANDARD
-  const output = renderWallpaper();
+  const output = renderWallpaper(1, "16x9", wallpaperName);
   // Full HD 16x10
-  // renderWallpaper(1, "16x10");
+  renderWallpaper(1, "16x10", wallpaperName);
   // 4k 16x9
-  // renderWallpaper(2);
+  renderWallpaper(2, "16x9", wallpaperName);
 
   return output;
 };
 
 const Download = () => {
   const [renderedImage, setRenderedImage] = useState();
-  const { photo } = useDataContext();
+  const {
+    photo,
+    details: { wallpaperName },
+  } = useDataContext();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,7 +66,7 @@ const Download = () => {
     document.querySelector("#outputPhoto").style.backgroundImage = `url(${
       photo && URL.createObjectURL(photo)
     })`;
-    renderWallpapers().then((res) => {
+    renderWallpapers(wallpaperName).then((res) => {
       setRenderedImage(res);
     });
   }, []);
