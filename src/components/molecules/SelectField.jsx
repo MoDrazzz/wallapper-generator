@@ -24,7 +24,7 @@ const SelectField = ({ initialValue, setFieldValue }) => {
   });
 
   return (
-    <div className="relative mb-[20px] w-full">
+    <div className="relative w-full">
       <Label
         isDownshiftLabel
         getterFunction={() =>

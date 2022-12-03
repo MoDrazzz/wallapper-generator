@@ -61,7 +61,7 @@ const Form = () => {
     >
       {({ setFieldValue }) => (
         <FormikForm
-          className="flex flex-1 flex-col items-end"
+          className="flex flex-1 flex-col items-end gap-[20px]"
           noValidate={true}
         >
           <div className="grid w-full grid-cols-[125px,_1fr] gap-[20px] sm:grid-cols-2">
@@ -82,16 +82,18 @@ const Form = () => {
             label="Wallpaper Name"
             name="wallpaperName"
             maxLength="30"
+            placeholder="Specify wallpaper name..."
           />
           <FormField
             label="Authors"
-            info="max 2, type comma after each"
+            info="max 2"
             name="authors"
             type="tag"
             maxLength="2"
             setFieldValue={setFieldValue}
+            placeholder="Specify authors... (separate each by comma)"
           />
-          <Button disabled={isLocked} classes="mt-auto">
+          <Button type="submit" disabled={isLocked} classes="mt-auto">
             Generate
           </Button>
         </FormikForm>

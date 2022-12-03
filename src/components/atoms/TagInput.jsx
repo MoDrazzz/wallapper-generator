@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Field } from "formik";
 import { useEffect, useState } from "react";
 
-const TagInput = ({ name, maxLength, setFieldValue }) => {
+const TagInput = ({ name, maxLength, setFieldValue, placeholder }) => {
   const [inputValue, setInputValue] = useState("");
   const [tags, setTags] = useState([]);
 
@@ -54,6 +54,7 @@ const TagInput = ({ name, maxLength, setFieldValue }) => {
           type={"text"}
           onChange={handleInput}
           value={inputValue}
+          placeholder={placeholder}
         />
       )}
     </div>

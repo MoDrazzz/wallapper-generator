@@ -11,13 +11,15 @@ const FormField = ({
   max,
   info,
   setFieldValue,
+  placeholder,
 }) => (
-  <div className="mb-[20px] w-full">
+  <div className="w-full">
     <Label name={name} label={label} info={info} />
     {type == "tag" ? (
       <TagInput
         name={name}
         maxLength={maxLength}
+        placeholder={placeholder}
         setFieldValue={setFieldValue}
       />
     ) : (
@@ -27,6 +29,7 @@ const FormField = ({
         maxLength={maxLength}
         min={min}
         max={max}
+        placeholder={placeholder}
       />
     )}
   </div>
