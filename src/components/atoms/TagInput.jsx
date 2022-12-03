@@ -29,7 +29,12 @@ const TagInput = ({ name, maxLength, setFieldValue, placeholder }) => {
 
   return (
     <div className="grid w-full grid-cols-[min-content_1fr] rounded-[5px] border-[1px] border-secondary">
-      <div className="flex h-full max-w-[400px] overflow-x-scroll  pl-[0]">
+      <div
+        className="flex h-full max-w-[400px] overflow-x-auto pl-[0]"
+        style={{
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
         {tags.map((tag, index) => (
           <span
             className="m-[4px] mr-[0] flex whitespace-nowrap rounded-[5px] border-[1px] border-lightGray bg-dimmedWhite px-[5px]   last:mr-[5px]"
