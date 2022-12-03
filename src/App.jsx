@@ -1,6 +1,5 @@
-import Router from "@/Router.jsx";
 import { DataProvider } from "@/components/DataProvider";
-import React, { useState, useEffect } from "react";
+import Router from "@/Router.jsx";
 
 const App = () => {
   return (

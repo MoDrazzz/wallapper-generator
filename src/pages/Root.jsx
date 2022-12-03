@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import Credits from "@/components/atoms/Credits";
 import Logo from "@/components/atoms/Logo.jsx";
 import Title from "@/components/atoms/Title";
-import ContentContainer from "@/components/organisms/ContentContainer";
 import Errors from "@/components/molecules/Errors";
-import { Outlet } from "react-router-dom";
 import Stages from "@/components/molecules/Stages";
+import ContentContainer from "@/components/organisms/ContentContainer";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 const Root = () => {
   const [errors, setErrors] = useState([]);
@@ -30,6 +31,7 @@ const Root = () => {
         <Outlet context={{ handleErrors, isLocked }} />
       </ContentContainer>
       {errors.length ? <Errors errors={errors} /> : null}
+      <Credits />
     </div>
   );
 };

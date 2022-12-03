@@ -1,6 +1,6 @@
-import OutputCallendarMonth from "@/components/atoms/OutputCallendarMonth.jsx";
-import OutputCallendarAuthors from "@/components/atoms/OutputCallendarAuthors.jsx";
 import Logo from "@/components/atoms/Logo.jsx";
+import OutputCallendarAuthors from "@/components/atoms/OutputCallendarAuthors.jsx";
+import OutputCallendarMonth from "@/components/atoms/OutputCallendarMonth.jsx";
 import OutputCallendarItems from "@/components/molecules/OutputCallendarItems.jsx";
 
 const OutputCallendar = () => (

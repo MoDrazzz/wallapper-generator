@@ -1,6 +1,6 @@
 import Input from "@/components/atoms/Input";
-import TagInput from "@/components/atoms/TagInput";
 import Label from "@/components/atoms/Label";
+import TagInput from "@/components/atoms/TagInput";
 
 const FormField = ({
   name,

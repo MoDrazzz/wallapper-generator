@@ -1,7 +1,6 @@
-import StageLine from "@/components/atoms/StageLine";
 import Stage from "@/components/atoms/Stage";
+import StageLine from "@/components/atoms/StageLine";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
 
 const Stages = () => {
   const { pathname: location } = useLocation();

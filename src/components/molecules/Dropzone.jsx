@@ -1,10 +1,10 @@
-import { useDropzone } from "react-dropzone";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate, useOutletContext } from "react-router-dom";
 import DropzoneParagraph from "@/components/atoms/DropzoneParagraph";
-import { flushSync } from "react-dom";
 import { useDataContext } from "@/components/DataProvider";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { flushSync } from "react-dom";
+import { useDropzone } from "react-dropzone";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const Dropzone = () => {
   const { handleErrors, isLocked } = useOutletContext();

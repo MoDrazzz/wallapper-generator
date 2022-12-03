@@ -1,14 +1,14 @@
+import Paragraph from "@/components/atoms/Paragraph";
+import { useDataContext } from "@/components/DataProvider";
+import LoadingScreen from "@/components/molecules/LoadingScreen";
+import Output from "@/components/organisms/Output";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDataContext } from "@/components/DataProvider";
-import Output from "@/components/organisms/Output";
-import Paragraph from "@/components/atoms/Paragraph";
-import LoadingScreen from "@/components/molecules/LoadingScreen";
 
-import html2canvas from "html2canvas";
 import Button from "@/components/atoms/Button";
+import html2canvas from "html2canvas";
 
-const renderWallpaper = async (scale = 1, aspectRatio = "16x9") => {
+const renderWallpaper = async (aspectRatio = "16x9") => {
   const height = aspectRatio == "16x10" ? 1200 : 1080;
 
   const generatedWallpaper = await html2canvas(
@@ -16,9 +16,9 @@ const renderWallpaper = async (scale = 1, aspectRatio = "16x9") => {
     {
       width: 1920,
       height,
+      scale: 1,
       windowWidth: 1920,
       windowHeight: height,
-      scale,
       useCORS: true,
       onclone: (doc) => {
         const elementToRender = doc.querySelector("#exportContainer");
@@ -32,7 +32,6 @@ const renderWallpaper = async (scale = 1, aspectRatio = "16x9") => {
 
   return {
     render: generatedWallpaper,
-    scale,
     aspectRatio,
   };
 };
@@ -41,11 +40,9 @@ const renderWallpapers = async () => {
   // Full HD 16x9 STANDARD
   const output16x9 = await renderWallpaper();
   // Full HD 16x10
-  const output16x10 = await renderWallpaper(1, "16x10");
-  // 4k 16x9
-  const output4k = await renderWallpaper(2);
+  const output16x10 = await renderWallpaper("16x10");
 
-  return [output16x9, output16x10, output4k];
+  return [output16x9, output16x10];
 };
 
 const Download = () => {
@@ -72,9 +69,7 @@ const Download = () => {
     for (let i in renderedWallpapers) {
       anchor.setAttribute(
         "download",
-        `${details.wallpaperName}_${renderedWallpapers[i].aspectRatio}_${
-          renderedWallpapers[i].scale * 2
-        }k.png`
+        `${details.wallpaperName}_${renderedWallpapers[i].aspectRatio}.png`
       );
       anchor.setAttribute("href", renderedWallpapers[i].render);
       anchor.click();

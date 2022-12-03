@@ -7,7 +7,7 @@ const OutputCallendarAuthors = () => {
   } = useDataContext();
 
   return (
-    <p className="min-w-max text-center text-[0.97rem] font-light leading-snug tracking-wide">
+    <p className="min-w-max text-center text-[0.97rem] leading-snug tracking-wide">
       foto
       {authors.map((author, id) => (
         <Fragment key={id}>

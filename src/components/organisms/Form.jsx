@@ -1,13 +1,11 @@
 import { Form as FormikForm, Formik } from "formik";
 
-import Label from "@/components/atoms/Label";
 import Button from "@/components/atoms/Button";
-import FormField from "@/components/molecules/FormField";
-import { useNavigate, useOutletContext } from "react-router-dom";
 import { useDataContext } from "@/components/DataProvider";
+import FormField from "@/components/molecules/FormField";
 import SelectField from "@/components/molecules/SelectField";
 import months from "@/data/months";
-import { useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 const Form = () => {
   const now = new Date();
@@ -67,7 +65,6 @@ const Form = () => {
           <div className="grid w-full grid-cols-[125px,_1fr] gap-[20px] sm:grid-cols-2">
             <SelectField
               initialValue={selectInitialValue}
-              // setSelectValue={setSelectValue}
               setFieldValue={setFieldValue}
             />
             <FormField

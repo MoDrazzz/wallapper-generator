@@ -10,3 +10,39 @@
     font-weight: 300;
   }
 }
+
+@layer components {
+  @keyframes rainbow {
+    0% {
+      background-position: left;
+    }
+    50% {
+      background-position: right;
+    }
+    100% {
+      background-position: left;
+    }
+  }
+  .rainbowElement {
+    display: inline-block;
+    transition: color 0.5s ease-in-out;
+  }
+  .rainbowLink:hover > .rainbowElement {
+    background: linear-gradient(
+      to left,
+      violet,
+      indigo,
+      blue,
+      green,
+      yellow,
+      orange,
+      red
+    );
+    background-size: 200% 200%;
+    animation: rainbow 2s ease-in-out infinite;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: color 0.2s ease-in-out;
+    color: transparent;
+  }
+}

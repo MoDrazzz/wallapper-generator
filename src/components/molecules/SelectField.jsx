@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
-import { useSelect } from "downshift";
 import months from "@/data/months";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useSelect } from "downshift";
 
 import Label from "@/components/atoms/Label";
 
@@ -29,7 +29,7 @@ const SelectField = ({ initialValue, setFieldValue }) => {
         isDownshiftLabel
         getterFunction={() =>
           getLabelProps({
-            className: "text-secondary md:text-lg",
+            className: "  md:text-lg",
           })
         }
       >
@@ -38,7 +38,7 @@ const SelectField = ({ initialValue, setFieldValue }) => {
       <button
         {...getToggleButtonProps({
           type: "button",
-          className: `flex w-full cursor-pointer items-center justify-between rounded-[5px] border-[1px] border-secondary p-[5px] pl-[10px] text-secondary ${
+          className: `flex w-full cursor-pointer items-center justify-between rounded-[5px] border-[1px] border-secondary p-[5px] pl-[10px]   ${
             isOpen ? "rounded-b-none" : null
           }`,
         })}

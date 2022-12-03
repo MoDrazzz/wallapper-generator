@@ -1,8 +1,8 @@
 import Paragraph from "@/components/atoms/Paragraph";
-import { useNavigate } from "react-router-dom";
 import { useDataContext } from "@/components/DataProvider";
-import { useEffect } from "react";
 import Form from "@/components/organisms/Form";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Details = () => {
   const navigate = useNavigate();

@@ -1,6 +1,5 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Field } from "formik";
 import { useEffect, useState } from "react";
 
 const TagInput = ({ name, maxLength, setFieldValue, placeholder }) => {
@@ -33,7 +32,7 @@ const TagInput = ({ name, maxLength, setFieldValue, placeholder }) => {
       <div className="flex h-full max-w-[400px] overflow-x-scroll  pl-[0]">
         {tags.map((tag, index) => (
           <span
-            className="m-[4px] mr-[0] flex whitespace-nowrap rounded-[5px] border-[1px] border-lightGray bg-dimmedWhite px-[5px] text-secondary last:mr-[5px]"
+            className="m-[4px] mr-[0] flex whitespace-nowrap rounded-[5px] border-[1px] border-lightGray bg-dimmedWhite px-[5px]   last:mr-[5px]"
             key={index}
           >
             {tag}
@@ -42,14 +41,14 @@ const TagInput = ({ name, maxLength, setFieldValue, placeholder }) => {
               type="button"
               onClick={() => handleDeleteTag(index)}
             >
-              <FontAwesomeIcon className="text-secondary" icon={faTimes} />
+              <FontAwesomeIcon className=" " icon={faTimes} />
             </button>
           </span>
         ))}
       </div>
       {tags.length == maxLength ? null : (
         <input
-          className="col-start-2 w-full rounded-[5px] p-[5px] pl-[10px] text-secondary"
+          className="col-start-2 w-full rounded-[5px] p-[5px] pl-[10px]  "
           name={name}
           type={"text"}
           onChange={handleInput}
