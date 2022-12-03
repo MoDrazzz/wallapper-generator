@@ -1,5 +1,5 @@
 const Credits = () => (
-  <a href="siema" className="rainbowLink">
+  <a href="https://github.com/MoDrazzz" className="rainbowLink">
     Website created by <span className="rainbowElement">MoDrazzz</span>
   </a>
 );
