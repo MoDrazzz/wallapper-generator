@@ -83,12 +83,12 @@ const Form = () => {
           />
           <FormField
             label="Authors"
-            info="max 2"
+            info="max 2, type comma after each"
             name="authors"
             type="tag"
             maxLength="2"
             setFieldValue={setFieldValue}
-            placeholder="Specify authors... (separate each by comma)"
+            placeholder="Specify authors..."
           />
           <Button type="submit" disabled={isLocked} classes="mt-auto">
             Generate
