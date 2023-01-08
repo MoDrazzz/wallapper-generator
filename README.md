@@ -18,7 +18,7 @@ Polish VACC is a group of passionate people providing virtual Air Traffic Contro
 
 ## Check the wallpapers
 
-Checkout wallpapers created using this tool! The photos are being choosen from screenshots submitted by community on [discord server][discord].
+Checkout wallpapers created using this tool! The photos are being choosen from screenshots submitted by community on [discord server][discord].<br />
 **https://plvacc.pl/newvacc/wallpapers.php**
 
 ## Installation
