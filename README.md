@@ -1,4 +1,4 @@
-# Polish VACC Wallpaper Generator
+# Wallpaper Generator
 
 Polish VACC is a group of passionate people providing virtual Air Traffic Control service in Poland. They follow real-world operations, rules and procedures, and provide documents that bring flying simulation a step closer to a realistic experience.
 
